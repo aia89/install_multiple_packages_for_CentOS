@@ -1,0 +1,18 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  become_method: sudo
+  tasks: 
+    - name: Install multiple packages
+      yum:
+        name: "{{ item }}"
+        state: installed
+      with_items:
+        - ftp
+        - elinks
+        - lftp
+        - httpd
+        - vsftpd
+        - wget
+        - gcc
